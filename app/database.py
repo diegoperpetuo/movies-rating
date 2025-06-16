@@ -5,4 +5,4 @@ import os
 load_dotenv()
 
 client = MongoClient(os.getenv("MONGO_URL"))
-db = client["ratings_db"]
+db = client[os.getenv("DATABASE_NAME")]

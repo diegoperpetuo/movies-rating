@@ -3,3 +3,5 @@ pymongo
 python-dotenv
 python-jose[cryptography]
 uvicorn
+python-multipart
+passlib[bcrypt]
