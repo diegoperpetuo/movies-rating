@@ -9,8 +9,17 @@ router = APIRouter()
 
 @router.post("/")
 def create_rating(rating: RatingCreate, user_id: str = Depends(get_current_user)):
+    print(f"Recebendo avaliação: {rating}")  # Log para debug
+    print(f"User ID: {user_id}")  # Log para debug
+    
     ratings = db["ratings"]
-    new_rating = rating_dict(user_id, rating)
+    new_rating = {
+        "user_id": user_id,
+        "title": rating.title,
+        "genre": rating.genre,
+        "rating": rating.rating,  # substitua score por rating
+        "created_at": datetime.utcnow()
+    }
     result = ratings.insert_one(new_rating)
     return {"message": "Rating created", "id": str(result.inserted_id)}
 

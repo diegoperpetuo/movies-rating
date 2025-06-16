@@ -12,6 +12,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],  # Permite todos os métodos HTTP
     allow_headers=["*"],  # Permite todos os headers
+    expose_headers=["*"]
 )
 
 app.include_router(auth_router, prefix="/api/auth", tags=["auth"])
